@@ -627,7 +627,7 @@ ${resultsTextContent}
             const response = await fetch('/.netlify/functions/send-email', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     parentName: parentName,
@@ -636,7 +636,7 @@ ${resultsTextContent}
                     resultsText: resultsText, // Pass plain text results
                     resultsHtml: resultsHtml,
                     keyStage: CURRENT_KEY_STAGE  // Pass HTML results
-                }),
+                })
             });
 
             if (response.ok) {
@@ -662,7 +662,7 @@ ${resultsTextContent}
 			const response = await fetch('/.netlify/functions/save-submission', {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json',
+					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
 					parentName,
@@ -672,7 +672,7 @@ ${resultsTextContent}
 					expectations,
 					detailedResults: userAnswers,
 					totalQuestions: totalQuestions // Add this line
-				}),
+				})
 			});
 			// ... rest of your saveSubmission function
 		} catch (error) {
@@ -730,6 +730,21 @@ ${resultsTextContent}
         alert('There was an issue loading the security check. Please refresh the page.');
     };
 
+    // New: Prevent unintended form submission on Enter key press within assessment questions
+    assessmentForm.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            const focusedElement = e.target;
+            // Check if the focused element is a text or number input
+            if (focusedElement.tagName.toLowerCase() === 'input' &&
+                (focusedElement.type === 'text' || focusedElement.type === 'number')) {
+                e.preventDefault(); // Stop the default form submission
+                // Optionally, trigger the "Next Question" button click
+                // This makes hitting enter move to the next question for text/number inputs
+                nextQuestionBtn.click();
+            }
+        }
+    });
+
     // Next Question Button
     nextQuestionBtn.addEventListener('click', nextQuestion);
 
@@ -737,5 +752,3 @@ ${resultsTextContent}
     assessmentForm.addEventListener('submit', (e) => {
         e.preventDefault();
         submitAssessment();
-    });
-});

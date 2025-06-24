@@ -697,6 +697,13 @@ ${resultsTextContent}
         startTimer();
     });
 
+    // New: Prevent unintended form submission on Enter key press within info form inputs
+    infoForm.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Stop the default form submission unconditionally
+        }
+    });
+
     // Cloudflare Turnstile Callback
     window.turnstileCallback = function(token) {
         // Verify token server-side (optional but recommended)
@@ -729,6 +736,20 @@ ${resultsTextContent}
         console.error('Turnstile widget encountered an error.');
         alert('There was an issue loading the security check. Please refresh the page.');
     };
+
+    // New: Prevent unintended form submission on Enter key press within assessment questions
+    assessmentForm.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Stop the default form submission unconditionally
+        }
+    });
+
+    // Global: Prevent unintended form submission on Enter key press anywhere else on the document
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Stop the default form submission unconditionally
+        }
+    });
 
     // Next Question Button
     nextQuestionBtn.addEventListener('click', nextQuestion);

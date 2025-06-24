@@ -489,19 +489,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     userAnswerDisplay = q.options[userAnswer]; // Display the option text, not just the key
                 }
             } else if (q.type === 'text') {
-                if (q.id === 'q12') {
-                    // Custom logic for Q12: Must start with a capital letter, contain 'blue', and end with a full stop
-                    const trimmedAnswer = userAnswer.trim();
-                    isCorrect = trimmedAnswer.length > 0 &&
-                                trimmedAnswer[0] === trimmedAnswer[0].toUpperCase() &&
-                                /[A-Z]/.test(trimmedAnswer[0]) && // Ensure the first char is an actual letter
-                                trimmedAnswer.toLowerCase().includes('blue') &&
-                                trimmedAnswer.endsWith('.');
-                } else {
-                    isCorrect = userAnswer.toLowerCase().trim() === q.correctAnswer.toLowerCase().trim();
+                const trimmedAnswer = userAnswer.toLowerCase().trim(); // Trim and lower-case for general text comparison
+                const correctTrimmedAnswer = q.correctAnswer.toLowerCase().trim();
+
+                if (q.id === 'q12') { // Custom validation for Q12 (Punctuation Commas)
+                    isCorrect = userAnswer.trim().length > 0 &&
+                                userAnswer.trim().startsWith('In the morning,') &&
+                                userAnswer.trim().endsWith('.');
+                } else if (q.id === 'q15') { // Custom validation for Q15 (Question Mark Sentence)
+                    isCorrect = userAnswer.trim().length > 0 &&
+                                userAnswer.trim().endsWith('?') &&
+                                userAnswer.trim()[0] === userAnswer.trim()[0].toUpperCase();
+                }
+                else { // General text input comparison
+                    isCorrect = trimmedAnswer === correctTrimmedAnswer;
                 }
             } else if (q.type === 'number') {
-                isCorrect = parseInt(userAnswer) === q.correctAnswer;
+                isCorrect = parseFloat(userAnswer) === q.correctAnswer; // Use parseFloat for numbers
             }
 
             if (isCorrect) {

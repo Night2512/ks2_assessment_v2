@@ -64,264 +64,279 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Assessment Data (Extracted from your index.html and corrected with your provided answers) ---
     const questions = [
-        {
-            id: 'q1',
-            type: 'radio',
-            topicHeading: "Reading Comprehension - Passage",
-            question: "What is the cat's name?",
-            passage: "Lily loves animals. She has a fluffy white cat named Snowdrop. Snowdrop likes to play with a red ball of yarn. Lily also has a small, brown dog called Buster. Buster loves to run in the park and chase squirrels.",
-            options: { a: "Buster", b: "Snowdrop", c: "Lily" },
-            correctAnswer: "b",
-            correctAnswerDisplay: "Snowdrop"
-        },
-        {
-            id: 'q2',
-            type: 'radio',
-            topicHeading: "Reading Comprehension - Detail",
-            question: "What colour is the cat?",
-            options: { a: "Brown", b: "Red", c: "White" },
-            correctAnswer: "c",
-            correctAnswerDisplay: "White"
-        },
-        {
-            id: 'q3',
-            type: 'text',
-            topicHeading: "Grammar - Plural Nouns",
-            question: "Fill in the missing word: Lily gets a second fluffy white cat. Now she has two fluffy white ____.",
-            correctAnswer: "cats",
-            explanation: "The plural of cat is 'cats'."
-        },
-        {
-            id: 'q4',
-            type: 'text',
-            topicHeading: "Spelling - Animal Names",
-            question: "Spell the word for the animal that chases squirrels in the park.",
-            correctAnswer: "dog",
-            explanation: "The animal that chases squirrels in the park is a dog."
-        },
-        {
-            id: 'q5',
-            type: 'text',
-            topicHeading: "Sentence Structure - Reordering",
-            question: "Put the words in the correct order to make a sentence: park., to, in, run, loves, Buster, the",
-            correctAnswer: "Buster loves to run in the park.",
-            explanation: "The correct sentence is 'Buster loves to run in the park.'"
-        },
-        {
-            id: 'q6',
-            type: 'text',
-            topicHeading: "Grammar - Verbs",
-            question: "What is the verb in the sentence: \"The bird flies high.\"?",
-            correctAnswer: "flies",
-            explanation: "The verb describes the action, which is 'flies'."
-        },
-        {
-            id: 'q7',
-            type: 'radio',
-            topicHeading: "Vocabulary - Opposites",
-            question: "What is the opposite of 'big'?",
-            options: { a: "large", b: "small", c: "huge" },
-            correctAnswer: "b",
-            correctAnswerDisplay: "small"
-        },
-        {
-            id: 'q8',
-            type: 'radio',
-            topicHeading: "Phonics - Rhyming Words",
-            question: "Which word rhymes with 'tree'?",
-            options: { a: "bee", b: "cat", c: "dog" },
-            correctAnswer: "a",
-            correctAnswerDisplay: "bee"
-        },
-        {
-            id: 'q9',
-            type: 'text',
-            topicHeading: "Vocabulary - Sentence Completion",
-            question: "Complete the sentence: \"I like to read a good _____.\"",
-            correctAnswer: "book",
-            explanation: "A common word to complete the sentence is 'book'."
-        },
-        {
-            id: 'q10',
-            type: 'radio',
-            topicHeading: "Grammar - Nouns",
-            question: "Which word is a noun?",
-            options: { a: "run", b: "quickly", c: "table" },
-            correctAnswer: "c",
-            correctAnswerDisplay: "table"
-        },
-        {
-            id: 'q11',
-            type: 'radio',
-            topicHeading: "Grammar - Past Tense",
-            question: "What is the past tense of 'go'?",
-            options: { a: "went", b: "go", c: "goes" },
-            correctAnswer: "a",
-            correctAnswerDisplay: "went"
-        },
-        {
-            id: 'q12',
-            type: 'text',
-            topicHeading: "Sentence Construction - Word Usage",
-            question: "Write a sentence using the word 'blue'.",
-            correctAnswer: "The sky is blue.", // This is now an example, not a strict match
-            explanation: "An example sentence is 'The sky is blue.' (Other grammatically correct sentences using 'blue' would also be acceptable)."
-        },
-        {
-            id: 'q13',
-            type: 'text',
-            topicHeading: "Grammar - Contractions",
-            question: "What is the contraction for 'I am'?",
-            correctAnswer: "I'm",
-            explanation: "The contraction for 'I am' is 'I'm'."
-        },
-        {
-            id: 'q14',
-            type: 'radio',
-            topicHeading: "Mathematics - Counting",
-            question: "How many apples are there?",
-            image: "images/13_apples.jpg", // Added image path
-            imageAlt: "A picture of 13 apples",
-            options: { a: "11", b: "13", c: "15" },
-            correctAnswer: "b",
-            correctAnswerDisplay: "13"
-        },
-        {
-            id: 'q15',
-            type: 'number',
-            topicHeading: "Mathematics - Addition",
-            question: "What is 7 + 5?",
-            correctAnswer: 12,
-            explanation: "7 plus 5 equals 12."
-        },
-        {
-            id: 'q16',
-            type: 'number',
-            topicHeading: "Mathematics - Subtraction",
-            question: "What is 10 - 3?",
-            correctAnswer: 7,
-            explanation: "10 minus 3 equals 7."
-        },
-        {
-            id: 'q17',
-            type: 'number',
-            topicHeading: "Mathematics - Missing Numbers",
-            question: "5 + ___ = 10",
-            correctAnswer: 5,
-            explanation: "5 plus 5 equals 10."
-        },
-        {
-            id: 'q18',
-            type: 'radio',
-            topicHeading: "Mathematics - Telling Time",
-            question: "What time does the clock show?",
-            image: "images/clock_3_oclock.png", // Added image path
-            imageAlt: "A clock showing 3 o'clock",
-            options: { a: "1 o'clock", b: "3 o'clock", c: "6 o'clock" },
-            correctAnswer: "b",
-            correctAnswerDisplay: "3 o'clock"
-        },
-        {
-            id: 'q19',
-            type: 'number',
-            topicHeading: "Mathematics - Word Problems (Addition)",
-            question: "Sarah has 6 red pens and 4 blue pens. How many pens does she have altogether?",
-            correctAnswer: 10,
-            explanation: "6 pens + 4 pens = 10 pens."
-        },
-        {
-            id: 'q20',
-            type: 'radio',
-            topicHeading: "Mathematics - Fractions",
-            question: "What fraction of the circle is shaded?",
-            image: "images/shaded_circle.png", // Added image path
-            imageAlt: "A circle with one-fourth shaded",
-            options: { a: "1/2", b: "1/3", c: "1/4" },
-            correctAnswer: "c",
-            correctAnswerDisplay: "1/4"
-        },
-        {
-            id: 'q21',
-            type: 'number',
-            topicHeading: "Mathematics - Geometry (Shapes)",
-            question: "How many corners does a square have?",
-            correctAnswer: 4,
-            explanation: "A square has 4 corners."
-        },
-        {
-            id: 'q22',
-            type: 'number',
-            topicHeading: "Mathematics - Repeated Addition",
-            question: "What is 2 + 2 + 2?",
-            correctAnswer: 6,
-            explanation: "2 + 2 + 2 = 6."
-        },
-        {
-            id: 'q23',
-            type: 'number',
-            topicHeading: "Mathematics - Word Problems (Subtraction)",
-            question: "If you have 7 balloons and 3 pop, how many are left?",
-            correctAnswer: 4,
-            explanation: "7 balloons - 3 popped balloons = 4 balloons left."
-        },
-        {
-            id: 'q24',
-            type: 'number',
-            topicHeading: "Mathematics - Halving",
-            question: "Half of 12 is?",
-            correctAnswer: 6,
-            explanation: "Half of 12 is 6."
-        },
-        {
-            id: 'q25',
-            type: 'number',
-            topicHeading: "Mathematics - Number Patterns",
-            question: "Count by 5s: 5, 10, 15, ___?",
-            correctAnswer: 20,
-            explanation: "The next number in the pattern 5, 10, 15 is 20 (counting by 5s)."
-        },
-        {
-            id: 'q26',
-            type: 'text',
-            topicHeading: "Mathematics - Geometry (Everyday Objects)",
-            question: "What shape is a regular door?",
-            correctAnswer: "rectangle",
-            explanation: "A regular door is typically a rectangle."
-        },
-        {
-            id: 'q27',
-            type: 'number',
-            topicHeading: "Mathematics - Time (Days in a Week)",
-            question: "How many days are in a week?",
-            correctAnswer: 7,
-            explanation: "There are 7 days in a week."
-        },
-        {
-            id: 'q28',
-            type: 'number',
-            topicHeading: "Mathematics - Subtraction",
-            question: "What is 15 take away 5?",
-            correctAnswer: 10,
-            explanation: "15 take away 5 equals 10."
-        },
-        {
-            id: 'q29',
-            type: 'radio',
-            topicHeading: "Mathematics - Measurement (Weight)",
-            question: "Which is heavier, a feather or a brick?",
-            options: { a: "Feather", b: "Brick" },
-            correctAnswer: "b",
-            correctAnswerDisplay: "Brick"
-        },
-        {
-            id: 'q30',
-            type: 'number',
-            topicHeading: "Mathematics - Multiplication (Groups)",
-            question: "If you have 4 groups of 2 objects, how many objects do you have in total?",
-            correctAnswer: 8,
-            explanation: "4 groups of 2 objects is 4 multiplied by 2, which equals 8."
-        }
-    ];
+	  {
+		"id": "q1",
+		"type": "radio",
+		"topicHeading": "Adverbs",
+		"question": "Which word is an adverb?",
+		"options": {
+		  "a": "quickly",
+		  "b": "beautiful",
+		  "c": "jump"
+		},
+		"correctAnswer": "a",
+		"correctAnswerDisplay": "quickly"
+	  },
+	  {
+		"id": "q2",
+		"type": "radio",
+		"topicHeading": "Past Tense",
+		"question": "Complete the sentence: \"She ______ to the shop yesterday.\"",
+		"options": {
+		  "a": "go",
+		  "b": "goes",
+		  "c": "went"
+		},
+		"correctAnswer": "c",
+		"correctAnswerDisplay": "went"
+	  },
+	  {
+		"id": "q3",
+		"type": "text",
+		"topicHeading": "Plurals",
+		"question": "What is the correct plural of 'child'?",
+		"correctAnswer": "children",
+		"explanation": "The plural of 'child' is 'children'."
+	  },
+	  {
+		"id": "q4",
+		"type": "text",
+		"topicHeading": "Possession (Apostrophes)",
+		"question": "Rewrite this sentence using an apostrophe for possession: \"The car belonging to Tom is red.\"",
+		"correctAnswer": "Tom's car is red.",
+		"explanation": "The possessive form uses an apostrophe: 'Tom's car is red.'"
+	  },
+	  {
+		"id": "q5",
+		"type": "text",
+		"topicHeading": "Verbs",
+		"question": "Identify the main verb in the sentence: \"The birds are singing loudly.\"",
+		"correctAnswer": "singing",
+		"explanation": "The main verb describing the action is 'singing'."
+	  },
+	  {
+		"id": "q6",
+		"type": "radio",
+		"topicHeading": "Punctuation",
+		"question": "Which punctuation mark is missing from this sentence? \"What a lovely day\"",
+		"options": {
+		  "a": ". (Full stop)",
+		  "b": "! (Exclamation mark)",
+		  "c": "? (Question mark)"
+		},
+		"correctAnswer": "b",
+		"correctAnswerDisplay": "! (Exclamation mark)"
+	  },
+	  {
+		"id": "q7",
+		"type": "text",
+		"topicHeading": "Past Tense",
+		"question": "Change to past tense: \"He walks to school.\"",
+		"correctAnswer": "He walked to school.",
+		"explanation": "The past tense of 'walks' is 'walked'."
+	  },
+	  {
+		"id": "q8",
+		"type": "text",
+		"topicHeading": "Adjectives",
+		"question": "Identify the adjective in: \"The clever fox jumped over the log.\"",
+		"correctAnswer": "clever",
+		"explanation": "'Clever' describes the fox, making it an adjective."
+	  },
+	  {
+		"id": "q9",
+		"type": "radio",
+		"topicHeading": "Synonyms",
+		"question": "Which word is a synonym for 'large'?",
+		"options": {
+		  "a": "small",
+		  "b": "big",
+		  "c": "tiny"
+		},
+		"correctAnswer": "b",
+		"correctAnswerDisplay": "big"
+	  },
+	  {
+		"id": "q10",
+		"type": "text",
+		"topicHeading": "Prepositions",
+		"question": "Complete with a preposition: \"The book is ______ the table.\"",
+		"correctAnswer": "on",
+		"explanation": "'On' is a common preposition to describe the book's location relative to the table."
+	  },
+	  {
+		"id": "q11",
+		"type": "radio",
+		"topicHeading": "Spelling",
+		"question": "What is the correct spelling?",
+		"options": {
+		  "a": "recieved",
+		  "b": "received",
+		  "c": "recieveed"
+		},
+		"correctAnswer": "b",
+		"correctAnswerDisplay": "received"
+	  },
+	  {
+		"id": "q12",
+		"type": "text",
+		"topicHeading": "Punctuation (Commas)",
+		"question": "Add a comma in the correct place: \"In the morning I eat breakfast.\"",
+		"correctAnswer": "In the morning, I eat breakfast.",
+		"explanation": "A comma is used after an introductory phrase like 'In the morning'."
+	  },
+	  {
+		"id": "q13",
+		"type": "text",
+		"topicHeading": "Comparative Adjectives",
+		"question": "What is the comparative form of 'good'?",
+		"correctAnswer": "better",
+		"explanation": "The comparative form of 'good' is 'better'."
+	  },
+	  {
+		"id": "q14",
+		"type": "text",
+		"topicHeading": "Verbs",
+		"question": "Identify the verb in: \"The children played happily in the park.\"",
+		"correctAnswer": "played",
+		"explanation": "'Played' is the verb, indicating the action performed by the children."
+	  },
+	  {
+		"id": "q15",
+		"type": "text",
+		"topicHeading": "Punctuation (Question Mark)",
+		"question": "Write a sentence using a question mark.",
+		"correctAnswer": "Do you like to read?",
+		"explanation": "An example sentence is 'Do you like to read?' (Any grammatically correct interrogative sentence ending with a question mark would be acceptable)."
+	  },
+	  {
+		"id": "q16",
+		"type": "number",
+		"topicHeading": "Addition",
+		"question": "What is 347 + 189?",
+		"correctAnswer": 536,
+		"explanation": "347 + 189 = 536."
+	  },
+	  {
+		"id": "q17",
+		"type": "number",
+		"topicHeading": "Multiplication",
+		"question": "What is 7 times 8?",
+		"correctAnswer": 56,
+		"explanation": "7 multiplied by 8 equals 56."
+	  },
+	  {
+		"id": "q18",
+		"type": "radio",
+		"topicHeading": "Fractions",
+		"question": "If a cake is divided into 4 equal slices, and you eat 1 slice, what fraction of the cake is left?",
+		"options": {
+		  "a": "1/4",
+		  "b": "2/4",
+		  "c": "3/4"
+		},
+		"correctAnswer": "c",
+		"correctAnswerDisplay": "3/4"
+	  },
+	  {
+		"id": "q19",
+		"type": "number",
+		"topicHeading": "Percentages",
+		"question": "What is 25% of 80?",
+		"correctAnswer": 20,
+		"explanation": "25% of 80 is 20 (one-quarter of 80)."
+	  },
+	  {
+		"id": "q20",
+		"type": "number",
+		"topicHeading": "Geometry (Angles)",
+		"question": "Look at the image below. What is the value of angle 'x'?",
+		"image": "images/angle_x.jpg",
+		"imageAlt": "Image of a straight line with an angle labelled x and an adjacent angle of 60 degrees.",
+		"correctAnswer": 120,
+		"explanation": "Angles on a straight line add up to 180 degrees. So, 180 - 60 = 120."
+	  },
+	  {
+		"id": "q21",
+		"type": "number",
+		"topicHeading": "Speed, Distance, Time",
+		"question": "A car travels 120 miles in 2 hours. What is its average speed in miles per hour?",
+		"correctAnswer": 60,
+		"explanation": "Speed = Distance / Time. So, 120 miles / 2 hours = 60 mph."
+	  },
+	  {
+		"id": "q22",
+		"type": "number",
+		"topicHeading": "Subtraction",
+		"question": "Calculate 456 - 123.",
+		"correctAnswer": 333,
+		"explanation": "456 minus 123 equals 333."
+	  },
+	  {
+		"id": "q23",
+		"type": "number",
+		"topicHeading": "Division",
+		"question": "What is 60 divided by 5?",
+		"correctAnswer": 12,
+		"explanation": "60 divided by 5 equals 12."
+	  },
+	  {
+		"id": "q24",
+		"type": "number",
+		"topicHeading": "Fractions to Decimals",
+		"question": "Convert 1/2 to a decimal.",
+		"correctAnswer": 0.5,
+		"explanation": "1/2 as a decimal is 0.5."
+	  },
+	  {
+		"id": "q25",
+		"type": "number",
+		"topicHeading": "Time Conversion",
+		"question": "How many minutes are in 3 hours?",
+		"correctAnswer": 180,
+		"explanation": "There are 60 minutes in an hour, so 3 hours * 60 minutes/hour = 180 minutes."
+	  },
+	  {
+		"id": "q26",
+		"type": "number",
+		"topicHeading": "Perimeter",
+		"question": "What is the perimeter of a square with a side length of 7 cm?",
+		"correctAnswer": 28,
+		"explanation": "The perimeter of a square is 4 times its side length. So, 4 * 7 cm = 28 cm."
+	  },
+	  {
+		"id": "q27",
+		"type": "text",
+		"topicHeading": "Ordering Numbers",
+		"question": "Arrange these numbers from smallest to largest: 15, 7, 23, 10. (include commas)",
+		"correctAnswer": "7,10,15,23",
+		"explanation": "The numbers in order from smallest to largest are 7, 10, 15, 23."
+	  },
+	  {
+		"id": "q28",
+		"type": "number",
+		"topicHeading": "Number Sequences",
+		"question": "What is the next number in the sequence: 2, 4, 6, 8, ___?",
+		"correctAnswer": 10,
+		"explanation": "This is a sequence of even numbers, so the next number after 8 is 10."
+	  },
+	  {
+		"id": "q29",
+		"type": "number",
+		"topicHeading": "Rounding",
+		"question": "Round 347 to the nearest 10.",
+		"correctAnswer": 350,
+		"explanation": "347 rounded to the nearest 10 is 350."
+	  },
+	  {
+		"id": "q30",
+		"type": "text",
+		"topicHeading": "Decimals to Fractions",
+		"question": "What is 0.5 as a fraction?",
+		"correctAnswer": "1/2",
+		"explanation": "0.5 is equivalent to 1/2 as a fraction."
+	  }
+	];
 
     let userAnswers = {};
     let currentQuestionIndex = 0;
